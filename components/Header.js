@@ -1,4 +1,5 @@
 import Link from "next/link";
+import HeaderStyles from "../styles/Header.module.scss";
 
 const linkStyle = {
   marginRight: 15
@@ -7,10 +8,19 @@ const linkStyle = {
 const Header = () => (
   <div>
     <Link href="/">
-      <a style={linkStyle}>Home</a>
+      <a className={HeaderStyles["link__item--black"]} style={linkStyle}>
+        Home
+      </a>
     </Link>
     <Link href="/about">
-      <a style={linkStyle}>About</a>
+      <a className={HeaderStyles["link__item"]} style={linkStyle}>
+        About
+      </a>
+    </Link>
+    <Link href="/fetch">
+      <a className={HeaderStyles["link__item"]} style={linkStyle}>
+        Fetch
+      </a>
     </Link>
   </div>
 );
