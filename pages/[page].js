@@ -2,23 +2,21 @@ import Layout from "../components/Layout";
 import fetch from "isomorphic-unfetch";
 
 const Page = props => {
-  console.log(props);
+  const { content: page } = props;
   return (
     <Layout>
-      <h1></h1>
+      <h1>{page.title.rendered}</h1>
+      <p>{page.content.rendered.replace(/<[/]?[pb]>/g, "")}</p>
     </Layout>
   );
 };
 
 Page.getInitialProps = async function(context) {
-  const { id } = context.query;
-  console.log(context);
-  const res = await fetch(`http://localhost/wp-json/wp/v2/pages/${id}`);
-  const page = await res.json();
+  const { page: slug } = context.query;
+  const res = await fetch(`http://localhost/wp-json/wp/v2/pages/?slug=${slug}`);
+  const [page] = await res.json();
 
-  console.log(page);
-
-  return { page };
+  return { content: page };
 };
 
 export default Page;

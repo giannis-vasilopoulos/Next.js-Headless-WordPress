@@ -9,10 +9,7 @@ const Fetch = props => {
       <ul>
         {props.pages.map(page => (
           <li key={page.id}>
-            <Link
-              href={{ pathname: "[page]", query: { id: page.id } }}
-              as={`${page.slug}`}
-            >
+            <Link href="[page]" as={`${page.slug}`}>
               <a>{page.title.rendered}</a>
             </Link>
           </li>
@@ -23,7 +20,9 @@ const Fetch = props => {
 };
 
 Fetch.getInitialProps = async function({ query }) {
-  const res = await fetch("http://localhost/wp-json/wp/v2/pages");
+  // http://localhost/wp-json/wp/v2/pages/
+
+  const res = await fetch("http://localhost/wp-json/wp/v2/pages/");
   const data = await res.json();
   return {
     pages: data
