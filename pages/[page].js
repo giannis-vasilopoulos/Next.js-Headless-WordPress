@@ -5,7 +5,7 @@ const Page = props => {
   const { content: page } = props;
   return (
     <Layout>
-      <h1>{page.title.rendered}</h1>
+      <h2>{page.title.rendered}</h2>
       <p>{page.content.rendered.replace(/<[/]?[pb]>/g, "")}</p>
     </Layout>
   );

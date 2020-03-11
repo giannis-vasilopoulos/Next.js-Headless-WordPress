@@ -16,6 +16,13 @@
     "next": "^9.3.0",
     "node-sass": "^4.13.1",
     "react": "^16.13.0",
-    "react-dom": "^16.13.0"
-  }
+    "react-dom": "^16.13.0",
+    "tailwindcss": "^1.2.0"
+  },
+  "browserslist": [
+    ">0.3%",
+    "not ie 10",
+    "not dead",
+    "not op_mini all"
+  ]
 }
