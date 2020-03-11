@@ -1,15 +1,28 @@
 import Layout from "../components/Layout";
-import QueryParamLink from "../components/QueryParamLink";
-import DynamicLink from "../components/DynamicLink";
 
-export default function Index() {
+const Index = ({ pages }) => {
   return (
     <Layout>
-      <h2>My Blog</h2>
-      <ul>
-        <QueryParamLink title="Hello Next.js" />
-        <DynamicLink id="learn-nextjs" />
-      </ul>
+      <div className="flex flex-wrap">
+        {pages.map(page => (
+          <div className="w-1/4" key={page.id}>
+            <p>{page.title.rendered}</p>
+            <img src="/images/sthlm-square.jpeg" alt="" />
+          </div>
+        ))}
+      </div>
     </Layout>
   );
-}
+};
+
+Index.getInitialProps = async function({ query }) {
+  const res = await fetch(
+    "http://localhost/wp-json/wp/v2/pages/?_embed"
+  );
+  const data = await res.json();
+  return {
+    pages: data
+  };
+};
+
+export default Index;

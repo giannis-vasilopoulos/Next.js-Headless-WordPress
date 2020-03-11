@@ -7,15 +7,17 @@ const layoutStyle = {
   border: "1px solid #DDD"
 };
 
-const Layout = props => (
+const Layout = ({ children, title = "Home", meta }) => (
   <>
     <Head>
-      <title>Next.js - WP</title>
+      <title>{`${title} | Next.js - WP`}</title>
+      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon" />
     </Head>
     <div style={layoutStyle}>
       <Header />
       <h1>Headless Wordpress with Next.js</h1>
-      {props.children}
+      {children}
     </div>
   </>
 );
