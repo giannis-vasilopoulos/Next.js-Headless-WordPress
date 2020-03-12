@@ -12,11 +12,6 @@ const Header = () => (
         Home
       </a>
     </Link>
-    <Link href="/about">
-      <a className={HeaderStyles["link__item"]} style={linkStyle}>
-        About
-      </a>
-    </Link>
     <Link href="/fetch">
       <a className={`bg-black ${HeaderStyles["link__item"]}`} style={linkStyle}>
         Fetch

@@ -1,4 +1,5 @@
 import Layout from "../components/Layout";
+import fetch from "isomorphic-unfetch";
 
 const Index = ({ pages }) => {
   return (
@@ -16,9 +17,7 @@ const Index = ({ pages }) => {
 };
 
 Index.getInitialProps = async function({ query }) {
-  const res = await fetch(
-    "http://localhost/wp-json/wp/v2/pages/?_embed"
-  );
+  const res = await fetch(`${process.env.CMS_URL}/wp-json/wp/v2/pages/?_embed`);
   const data = await res.json();
   return {
     pages: data

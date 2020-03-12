@@ -20,9 +20,7 @@ const Fetch = props => {
 };
 
 Fetch.getInitialProps = async function({ query }) {
-  const res = await fetch(
-    "http://localhost/wp-json/wp/v2/pages/"
-  );
+  const res = await fetch(`${process.env.CMS_URL}/wp-json/wp/v2/pages/`);
   const data = await res.json();
   return {
     pages: data

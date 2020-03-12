@@ -10,7 +10,7 @@ const layoutStyle = {
 const Layout = ({ children, title = "Home", meta }) => (
   <>
     <Head>
-      <title>{`${title} | Next.js - WP`}</title>
+      <title>{`${title} | ${process.env.PROJECT_NAME}`}</title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon" />
     </Head>

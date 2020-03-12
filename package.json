@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next -p 8000",
+    "dev": "next -p 8001",
     "build": "next build",
     "start": "next start"
   },
@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@zeit/next-sass": "^1.0.1",
+    "dotenv": "^8.2.0",
     "isomorphic-unfetch": "^3.0.0",
     "next": "^9.3.0",
     "node-sass": "^4.13.1",
