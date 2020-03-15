@@ -22,6 +22,19 @@ module.exports = withSass({
           },
           { loader: "sass-loader" }
         ]
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: "react-svg-loader",
+            options: {
+              svgo: {
+                plugins: [{ removeViewBox: false }]
+              }
+            }
+          }
+        ]
       }
     ];
     return {

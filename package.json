@@ -26,5 +26,8 @@
     "not ie 10",
     "not dead",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "react-svg-loader": "^3.0.3"
+  }
 }

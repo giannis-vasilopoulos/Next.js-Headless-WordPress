@@ -2,17 +2,22 @@ import Layout from "../components/Layout";
 import React, { Component } from "react";
 
 import WPAPI from "wpapi";
-const wp = new WPAPI({ endpoint: process.env.CMS_URL });
+const wp = new WPAPI({ endpoint: `${process.env.CMS_URL}/wp-json` });
 
 export default class Index extends Component {
   static async getInitialProps() {
-    const [pages] = await Promise.all([wp.pages().embed()]);
+    const [pages] = await Promise.all([
+      wp
+        .pages()
+        .embed()
+        .perPage(4)
+        .page(1)
+    ]);
 
     return { pages };
   }
 
   render() {
-    // console.log(this.props);
     const { pages } = this.props;
     return (
       <Layout>
