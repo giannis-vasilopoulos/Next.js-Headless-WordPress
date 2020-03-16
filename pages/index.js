@@ -1,18 +1,14 @@
-import Layout from "../components/Layout";
 import React, { Component } from "react";
-
 import WPAPI from "wpapi";
+
+import Layout from "../components/Layout";
+import GridItem from "../components/grid/grid-item";
+
 const wp = new WPAPI({ endpoint: `${process.env.CMS_URL}/wp-json` });
 
 export default class Index extends Component {
   static async getInitialProps() {
-    const [pages] = await Promise.all([
-      wp
-        .pages()
-        .embed()
-        .perPage(4)
-        .page(1)
-    ]);
+    const [pages] = await Promise.all([wp.pages().perPage(4)]);
 
     return { pages };
   }
@@ -23,10 +19,7 @@ export default class Index extends Component {
       <Layout>
         <div className="flex flex-wrap">
           {pages.map(page => (
-            <div className="w-1/4" key={page.id}>
-              <p>{page.title.rendered}</p>
-              <img src="/images/sthlm-square.jpeg" alt="" />
-            </div>
+            <GridItem page={page} key={page.id} />
           ))}
         </div>
       </Layout>
