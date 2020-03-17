@@ -7,19 +7,21 @@ const layoutStyle = {
   border: "1px solid #DDD"
 };
 
-const Layout = ({ children, title = "Home", meta }) => (
-  <>
-    <Head>
-      <title>{`${title} | ${process.env.PROJECT_NAME}`}</title>
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon" />
-    </Head>
-    <div style={layoutStyle}>
-      <Header />
-      <h1>Headless Wordpress with Next.js</h1>
-      {children}
-    </div>
-  </>
-);
+const Layout = ({ children, title = "Home", meta }) => {
+  return (
+    <>
+      <Head>
+        <title>{`${title}`}</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon" />
+      </Head>
+      <div style={layoutStyle}>
+        <Header />
+        <h1>Headless Wordpress with Next.js</h1>
+        {children}
+      </div>
+    </>
+  );
+};
 
 export default Layout;

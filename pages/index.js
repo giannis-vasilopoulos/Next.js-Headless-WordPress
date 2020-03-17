@@ -8,15 +8,23 @@ const wp = new WPAPI({ endpoint: `${process.env.CMS_URL}/wp-json` });
 
 export default class Index extends Component {
   static async getInitialProps() {
-    const [pages] = await Promise.all([wp.pages().perPage(4)]);
+    const [home, pages] = await Promise.all([
+      wp
+        .pages()
+        .slug("home")
+        .then(data => {
+          return data[0];
+        }),
+      wp.pages().perPage(4)
+    ]);
 
-    return { pages };
+    return { home, pages };
   }
 
   render() {
-    const { pages } = this.props;
+    const { home, pages } = this.props;
     return (
-      <Layout>
+      <Layout title={home.yoast_title} meta={home.yoast_meta}>
         <div className="flex flex-wrap">
           {pages.map(page => (
             <GridItem page={page} key={page.id} />
