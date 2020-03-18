@@ -13,11 +13,6 @@ const Header = () => (
         Home
       </a>
     </Link>
-    <Link href="/fetch">
-      <a className={`bg-black ${HeaderStyles["link__item"]}`} style={linkStyle}>
-        Fetch
-      </a>
-    </Link>
   </div>
 );
 

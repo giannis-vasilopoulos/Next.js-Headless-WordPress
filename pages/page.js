@@ -6,7 +6,8 @@ const wp = new WPAPI({ endpoint: `${process.env.CMS_URL}/wp-json` });
 
 export default class Page extends Component {
   static async getInitialProps(context) {
-    const { page: slug } = context.query;
+    console.log(context.query);
+    const { slug } = context.query;
 
     const post = await wp
       .pages()
@@ -22,9 +23,15 @@ export default class Page extends Component {
     const { post } = this.props;
     if (!post) return <Error statusCode={404} />;
     return (
-      <Layout title={post.title.rendered}>
+      <Layout title={post.yoast_title}>
         <h2>{post.title.rendered}</h2>
-        <p>{post.content.rendered.replace(/<[/]?[pb]>/g, "")}</p>
+        <div
+          className="mv4"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: post.content.rendered
+          }}
+        />
       </Layout>
     );
   }

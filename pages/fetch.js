@@ -9,7 +9,10 @@ const Fetch = props => {
       <ul>
         {props.pages.map(page => (
           <li key={page.id}>
-            <Link href="[page]" as={`${page.slug}`}>
+            <Link
+              href={`/page?slug=${page.slug}&apiRoute=page`}
+              as={`${page.slug}`}
+            >
               <a>{page.title.rendered}</a>
             </Link>
           </li>

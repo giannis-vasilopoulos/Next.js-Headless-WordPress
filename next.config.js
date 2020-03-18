@@ -4,8 +4,7 @@ const tailwindCss = require("tailwindcss");
 module.exports = withSass({
   poweredByHeader: false,
   env: {
-    CMS_URL: process.env.CMS_URL,
-    PROJECT_NAME: process.env.PROJECT_NAME
+    CMS_URL: process.env.CMS_URL
   },
   cssModules: true,
   webpack(config, options) {
