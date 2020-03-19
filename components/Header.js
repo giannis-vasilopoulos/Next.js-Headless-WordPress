@@ -1,19 +1,13 @@
-import Link from "next/link";
-import HeaderStyles from "../styles/modules/Header.module.scss";
 import Logo from "../public/images/nextlogo.svg";
-const linkStyle = {
-  marginRight: 15
-};
+import Menu from "./Menu";
 
-const Header = () => (
-  <div>
-    <Logo width={150} height={100} />
-    <Link href="/">
-      <a className={HeaderStyles["link__item--black"]} style={linkStyle}>
-        Home
-      </a>
-    </Link>
-  </div>
-);
+const Header = ({ menu }) => {
+  return (
+    <div>
+      <Logo width={150} height={100} />
+      <Menu menu={menu} />
+    </div>
+  );
+};
 
 export default Header;
