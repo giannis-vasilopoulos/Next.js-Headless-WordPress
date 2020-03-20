@@ -10,6 +10,16 @@ app
   .then(() => {
     const server = express();
 
+    // middleware to check the lang to the request url
+    server.use(function(req, res, next) {
+      var match = req.url.match(/^\/([A-Z]{2})([\/\?].*)?$/i);
+      if (match) {
+        req.lang = match[1];
+        req.url = match[2] || "/";
+      }
+      next();
+    });
+
     server.get("/:type/:slug", (req, res) => {
       const actualPage = "/rooms/[slug]";
       const queryParams = { slug: req.params.slug, apiRoute: req.params.type };
@@ -17,8 +27,9 @@ app
     });
 
     server.get("/:slug", (req, res) => {
+      const lang = req.lang || "en";
       const actualPage = req.params.slug === "rooms" ? "/rooms" : "/page";
-      const queryParams = { slug: req.params.slug };
+      const queryParams = { slug: req.params.slug, lang: lang };
       app.render(req, res, actualPage, queryParams);
     });
 
