@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Header from "./Header";
+import "../styles/styles.scss";
 
 const layoutStyle = {
   margin: 20,

@@ -1,12 +1,9 @@
-import React, { Component } from "react";
 import Link from "next/link";
+import getSlug from "../components/common/getSlug";
+
 import HeaderStyles from "../styles/modules/Header.module.scss";
 
 const Menu = ({ menu }) => {
-  const getSlug = url => {
-    const parts = url.split("/");
-    return parts.length > 2 ? parts[parts.length - 2] : "";
-  };
   return (
     <>
       <Link href="/">
@@ -25,7 +22,7 @@ const Menu = ({ menu }) => {
           );
         }
         const slug = getSlug(item.url);
-        const actualPage = item.object === "category" ? "category" : "post";
+        const actualPage = item.object === "category" ? "category" : "page";
         return (
           <Link
             as={`/${slug}`}

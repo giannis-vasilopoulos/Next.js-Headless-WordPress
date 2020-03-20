@@ -1,4 +1,3 @@
-import React from "react";
 import WPAPI from "wpapi";
 
 const wp = new WPAPI({ endpoint: `${process.env.CMS_URL}/wp-json` });
