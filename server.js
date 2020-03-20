@@ -10,14 +10,14 @@ app
   .then(() => {
     const server = express();
 
-    server.get("/page/:slug", (req, res) => {
-      const actualPage = "/post";
-      const queryParams = { slug: req.params.slug, apiRoute: "page" };
+    server.get("/:type/:slug", (req, res) => {
+      const actualPage = "/rooms/[slug]";
+      const queryParams = { slug: req.params.slug, apiRoute: req.params.type };
       app.render(req, res, actualPage, queryParams);
     });
 
-    server.get("/category/:slug", (req, res) => {
-      const actualPage = "/category";
+    server.get("/:slug", (req, res) => {
+      const actualPage = req.params.slug === "rooms" ? "/rooms" : "/page";
       const queryParams = { slug: req.params.slug };
       app.render(req, res, actualPage, queryParams);
     });
@@ -27,12 +27,6 @@ app
       const actualPage = "/preview";
       const { id, rev, type, status, wpnonce } = req.params;
       const queryParams = { id, rev, type, status, wpnonce };
-      app.render(req, res, actualPage, queryParams);
-    });
-
-    server.get("/:slug", (req, res) => {
-      const actualPage = "/page";
-      const queryParams = { slug: req.params.slug, apiRoute: "page" };
       app.render(req, res, actualPage, queryParams);
     });
 

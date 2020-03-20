@@ -21,12 +21,12 @@ const Menu = ({ menu }) => {
             </a>
           );
         }
-        const slug = getSlug(item.url);
-        const actualPage = item.object === "category" ? "category" : "page";
+        const path = getSlug(item.url);
+        const actualPage = item.object === "rooms" ? "rooms" : "page";
         return (
           <Link
-            as={`/${slug}`}
-            href={`/${actualPage}?slug=${slug}&apiRoute=${item.object}`}
+            as={`${path}`}
+            href={`/${path}?slug=${item.slug}`}
             key={item.ID}
           >
             <a className={HeaderStyles["link__item"]}>{item.title}</a>

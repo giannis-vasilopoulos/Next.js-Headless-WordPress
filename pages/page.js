@@ -5,7 +5,7 @@ const wp = new WPAPI({ endpoint: `${process.env.CMS_URL}/wp-json` });
 class Page extends React.Component {
   static async getInitialProps(context) {
     const { slug } = context.query;
-
+    // console.log(slug);
     const page = await wp
       .pages()
       .slug(slug)
