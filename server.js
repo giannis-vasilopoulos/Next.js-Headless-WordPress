@@ -18,6 +18,7 @@ app
       var match = req.url.match(/^\/([A-Z]{2})([\/\?].*)?$/i);
       if (match) {
         req.lang = match[1];
+        req.url = match[2] || "/";
       } else {
         req.lang = defaultLang;
       }
