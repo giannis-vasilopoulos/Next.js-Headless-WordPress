@@ -1,18 +1,18 @@
 import Layout from "../../components/Layout";
 
-function HomeItem(props) {
+function Rooms(props) {
   // console.log(props);
   return (
     <Layout>
-      <p>This is the blog post index fkdfsklfskl content.</p>
+      <p>This is the blog post index.</p>
     </Layout>
   );
 }
 
-HomeItem.getInitialProps = async function({ query }) {
+Rooms.getInitialProps = async function({ query }) {
   return {
     query
   };
 };
 
-export default HomeItem;
+export default Rooms;

@@ -1,6 +1,6 @@
 import Layout from "../../components/Layout";
 
-function HomeItem(props) {
+function RoomItem(props) {
   // console.log(props);
   return (
     <Layout>
@@ -9,10 +9,10 @@ function HomeItem(props) {
   );
 }
 
-HomeItem.getInitialProps = async function({ query }) {
+RoomItem.getInitialProps = async function({ query }) {
   return {
     query
   };
 };
 
-export default HomeItem;
+export default RoomItem;

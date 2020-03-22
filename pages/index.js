@@ -1,4 +1,3 @@
-import React, { Component } from "react";
 // import WPAPI from "wpapi";
 import fetch from "isomorphic-unfetch";
 import Layout from "../components/Layout";
@@ -7,7 +6,7 @@ import PageWrapper from "../components/PageWrapper";
 import Header from "../components/Header";
 // const wp = new WPAPI({ endpoint: `${process.env.CMS_URL}/wp-json` });
 
-class Index extends Component {
+class Index extends React.Component {
   static async getInitialProps() {
     const [home, pages] = await Promise.all([
       await fetch(

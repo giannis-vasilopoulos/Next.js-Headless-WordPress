@@ -1,7 +1,10 @@
 const express = require("express");
 const next = require("next");
+const dotenv = require("dotenv");
+dotenv.config();
 
 const dev = process.env.NODE_ENV !== "production";
+const defaultLang = process.env.DEFAULT_LANG;
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
@@ -15,7 +18,8 @@ app
       var match = req.url.match(/^\/([A-Z]{2})([\/\?].*)?$/i);
       if (match) {
         req.lang = match[1];
-        req.url = match[2] || "/";
+      } else {
+        req.lang = defaultLang;
       }
       next();
     });
@@ -27,9 +31,8 @@ app
     });
 
     server.get("/:slug", (req, res) => {
-      const lang = req.lang || "en";
       const actualPage = req.params.slug === "rooms" ? "/rooms" : "/page";
-      const queryParams = { slug: req.params.slug, lang: lang };
+      const queryParams = { slug: req.params.slug, lang: req.lang };
       app.render(req, res, actualPage, queryParams);
     });
 
