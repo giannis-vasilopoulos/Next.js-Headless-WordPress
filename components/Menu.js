@@ -10,6 +10,8 @@ const Menu = ({ menu }) => {
         <a className={HeaderStyles["link__item"]}>Home</a>
       </Link>
       {menu.items.map(item => {
+        const path = getSlug(item.url);
+
         if (item.object === "custom") {
           return (
             <a
@@ -21,12 +23,12 @@ const Menu = ({ menu }) => {
             </a>
           );
         }
-        const path = getSlug(item.url);
+
         const actualPage = item.object === "rooms" ? "rooms" : "page";
         return (
           <Link
             as={`${path}`}
-            href={`/${path}?slug=${item.slug}`}
+            href={`/${actualPage}?slug=${item.slug}&lang=el`}
             key={item.ID}
           >
             <a className={HeaderStyles["link__item"]}>{item.title}</a>

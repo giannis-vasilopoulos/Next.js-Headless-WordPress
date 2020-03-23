@@ -27,7 +27,11 @@ app
 
     server.get("/:type/:slug", (req, res) => {
       const actualPage = "/rooms/[slug]";
-      const queryParams = { slug: req.params.slug, apiRoute: req.params.type };
+      const queryParams = {
+        slug: req.params.slug,
+        apiRoute: req.params.type,
+        lang: req.lang
+      };
       app.render(req, res, actualPage, queryParams);
     });
 
