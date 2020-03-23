@@ -32,13 +32,13 @@ app
         apiRoute: req.params.type,
         lang: req.lang
       };
-      app.render(req, res, actualPage, queryParams);
+      return app.render(req, res, actualPage, queryParams);
     });
 
     server.get("/:slug", (req, res) => {
       const actualPage = req.params.slug === "rooms" ? "/rooms" : "/page";
       const queryParams = { slug: req.params.slug, lang: req.lang };
-      app.render(req, res, actualPage, queryParams);
+      return app.render(req, res, actualPage, queryParams);
     });
 
     //preview draft before publish
@@ -46,7 +46,7 @@ app
       const actualPage = "/preview";
       const { id, rev, type, status, wpnonce } = req.params;
       const queryParams = { id, rev, type, status, wpnonce };
-      app.render(req, res, actualPage, queryParams);
+      return app.render(req, res, actualPage, queryParams);
     });
 
     // Fallback handler

@@ -1,5 +1,5 @@
 import WPAPI from "wpapi";
-
+import { LocaleProvider } from "../context/LocaleContext";
 const wp = new WPAPI({ endpoint: `${process.env.CMS_URL}/wp-json` });
 
 // This route is copied from the plugin: wordpress/wp-content/plugins/wp-rest-api-v2-menus/wp-rest-api-v2-menus.php
@@ -8,7 +8,8 @@ wp.menus = wp.registerRoute("menus/v1", "/menus/(?P<id>[a-zA-Z(-]+)");
 const PageWrapper = Comp =>
   class extends React.Component {
     static async getInitialProps(context) {
-      const { lang } = context.query;
+      const { lang } = context.query.lang ? context.query : context.req;
+      console.log(`props lang ${lang}`);
       const [headerMenu, childProps] = await Promise.all([
         wp
           .menus()
@@ -18,13 +19,20 @@ const PageWrapper = Comp =>
       ]);
 
       return {
+        lang,
         headerMenu,
         ...childProps
       };
     }
 
     render() {
-      return <Comp {...this.props} />;
+      let { lang, ...childProps } = this.props;
+      console.log(`render lang ${lang}`);
+      return (
+        <LocaleProvider lang={lang}>
+          <Comp {...childProps} />
+        </LocaleProvider>
+      );
     }
   };
 

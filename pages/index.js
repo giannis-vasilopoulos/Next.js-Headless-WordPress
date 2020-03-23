@@ -23,7 +23,6 @@ class Index extends React.Component {
 
   render() {
     const { home, pages, headerMenu } = this.props;
-
     return (
       <Layout title={home[0].yoast_title} meta={home[0].yoast_meta}>
         <Header menu={headerMenu} />
