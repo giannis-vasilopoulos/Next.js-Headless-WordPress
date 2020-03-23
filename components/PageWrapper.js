@@ -8,8 +8,7 @@ wp.menus = wp.registerRoute("menus/v1", "/menus/(?P<id>[a-zA-Z(-]+)");
 const PageWrapper = Comp =>
   class extends React.Component {
     static async getInitialProps(context) {
-      const { lang } = context.query.lang ? context.query : context.req;
-      console.log(`props lang ${lang}`);
+      const { lang } = context.query;
       const [headerMenu, childProps] = await Promise.all([
         wp
           .menus()
@@ -27,7 +26,6 @@ const PageWrapper = Comp =>
 
     render() {
       let { lang, ...childProps } = this.props;
-      console.log(`render lang ${lang}`);
       return (
         <LocaleProvider lang={lang}>
           <Comp {...childProps} />

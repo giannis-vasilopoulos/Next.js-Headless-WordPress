@@ -9,7 +9,10 @@ const Menu = ({ menu }) => {
   const { locale } = useContext(LocaleContext);
   return (
     <>
-      <Link as={`/`} href={`/?slug=home&lang=${locale}`}>
+      <Link
+        as={`/${locale != process.env.DEFAULT_LANG ? locale : ""}`}
+        href={`/?slug=home&lang=${locale}`}
+      >
         <a className={HeaderStyles["link__item"]}>Home</a>
       </Link>
       {menu.items.map(item => {

@@ -4,15 +4,15 @@ import Layout from "../components/Layout";
 import PageWrapper from "../components/PageWrapper";
 import Header from "../components/Header";
 
-const wp = new WPAPI({ endpoint: `${process.env.CMS_URL}/wp-json` });
-
 class Page extends React.Component {
   static async getInitialProps(context) {
     const { slug, lang } = context.query;
+    const wp = new WPAPI({
+      endpoint: `${process.env.CMS_URL}/${lang}/wp-json`
+    });
     const page = await wp
       .pages()
       .slug(slug)
-      .param("lang", lang)
       .then(data => {
         return data[0];
       });

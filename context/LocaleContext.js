@@ -2,7 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 
 export const LocaleContext = React.createContext({
-  locale: "en",
+  locale: process.env.DEFAULT_LANG,
   setLocale: () => null
 });
 

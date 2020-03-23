@@ -35,6 +35,11 @@ app
       return app.render(req, res, actualPage, queryParams);
     });
 
+    server.get("/", (req, res) => {
+      const queryParams = { slug: req.params.slug, lang: req.lang };
+      return app.render(req, res, "/", queryParams);
+    });
+
     server.get("/:slug", (req, res) => {
       const actualPage = req.params.slug === "rooms" ? "/rooms" : "/page";
       const queryParams = { slug: req.params.slug, lang: req.lang };
