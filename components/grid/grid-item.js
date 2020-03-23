@@ -6,7 +6,7 @@ const GridItem = ({ page }) => {
         src={
           page.better_featured_image
             ? page.better_featured_image.source_url
-            : "/images/sthlm-square.jpeg"
+            : "./images/sthlm-square.jpeg"
         }
         alt={page.title.rendered}
       />

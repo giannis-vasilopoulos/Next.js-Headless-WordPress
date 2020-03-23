@@ -1,5 +1,6 @@
 const express = require("express");
 const next = require("next");
+const path = require("path");
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -12,6 +13,8 @@ app
   .prepare()
   .then(() => {
     const server = express();
+
+    server.use("/", express.static(path.join(__dirname, "public")));
 
     // middleware to check the lang to the request url
     server.use(function(req, res, next) {
