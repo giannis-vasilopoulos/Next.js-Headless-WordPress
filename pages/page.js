@@ -1,5 +1,6 @@
 import Error from "next/error";
 import WPAPI from "wpapi";
+
 import Layout from "../components/Layout";
 import PageWrapper from "../components/PageWrapper";
 import Header from "../components/Header";
