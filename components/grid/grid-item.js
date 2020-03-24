@@ -1,19 +1,19 @@
-const GridItem = ({ page }) => {
+const GridItem = ({ room }) => {
   return (
-    <div className="w-1/4" key={page.id}>
-      <p className="text-center m-3">{page.title.rendered}</p>
+    <div className="w-1/4">
+      <p className="text-center m-3">{room.title.rendered}</p>
       <img
         src={
-          page.better_featured_image
-            ? page.better_featured_image.source_url
+          room.better_featured_image
+            ? room.better_featured_image.source_url
             : "./images/sthlm-square.jpeg"
         }
-        alt={page.title.rendered}
+        alt={room.title.rendered}
       />
-      <p className="text-center m-3">{page.acf.location}</p>
+      <p className="text-center m-3">{room.acf.location}</p>
       <ul>
-        {page.acf.facilities &&
-          page.acf.facilities.map((facility, i) => (
+        {room.acf.facilities &&
+          room.acf.facilities.map((facility, i) => (
             <li key={i}>{facility.title} </li>
           ))}
       </ul>

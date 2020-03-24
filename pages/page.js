@@ -3,12 +3,13 @@ import WPAPI from "wpapi";
 import Layout from "../components/Layout";
 import PageWrapper from "../components/PageWrapper";
 import Header from "../components/Header";
+import endpoint from "../components/common/getEndpoint";
 
 class Page extends React.Component {
   static async getInitialProps(context) {
     const { slug, lang } = context.query;
     const wp = new WPAPI({
-      endpoint: `${process.env.CMS_URL}/${lang}/wp-json`
+      endpoint: endpoint(lang)
     });
     const page = await wp
       .pages()
