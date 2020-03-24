@@ -12,14 +12,18 @@ class Page extends React.Component {
     const wp = new WPAPI({
       endpoint: endpoint(lang)
     });
-    const page = await wp
-      .pages()
-      .slug(slug)
-      .then(data => {
-        return data[0];
-      });
+    try {
+      const page = await wp
+        .pages()
+        .slug(slug)
+        .then(data => {
+          return data[0];
+        });
 
-    return { page };
+      return { page };
+    } catch (err) {
+      return null;
+    }
   }
 
   render() {

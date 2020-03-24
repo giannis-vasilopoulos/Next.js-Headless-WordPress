@@ -13,16 +13,19 @@ class Index extends React.Component {
     const wp = new WPAPI({ endpoint: endpoint(lang) });
     wp.rooms = wp.registerRoute("wp/v2", "/rooms/");
     wp.frontpage = wp.registerRoute("wp/v2", "/frontpage/");
-    const [home, rooms] = await Promise.all([
-      wp.frontpage(),
-      wp
-        .rooms()
-        .perPage(4)
-        .order("desc")
-        .orderby("date")
-    ]);
-
-    return { home, rooms };
+    try {
+      const [home, rooms] = await Promise.all([
+        wp.frontpage(),
+        wp
+          .rooms()
+          .perPage(4)
+          .order("desc")
+          .orderby("date")
+      ]);
+      return { home, rooms };
+    } catch (err) {
+      return null;
+    }
   }
 
   render() {
