@@ -7,7 +7,7 @@ module.exports = withSass({
     CMS_URL: process.env.CMS_URL,
     DEFAULT_LANG: process.env.DEFAULT_LANG
   },
-  cssModules: true,
+  cssModules: false,
   webpack(config, options) {
     const rules = [
       {
