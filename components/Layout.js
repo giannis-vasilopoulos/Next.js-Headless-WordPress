@@ -1,5 +1,4 @@
 import Head from "next/head";
-import "../styles/styles.scss";
 
 const layoutStyle = {
   margin: 20,

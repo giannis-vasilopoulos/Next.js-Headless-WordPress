@@ -26,10 +26,11 @@
   "browserslist": [
     ">0.3%",
     "not ie 10",
-    "not dead",
-    "not op_mini all"
+    "not dead"
   ],
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^2.1.0",
+    "autoprefixer": "^9.7.5",
     "cross-env": "^7.0.2",
     "react-svg-loader": "^3.0.3"
   }

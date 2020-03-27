@@ -41,7 +41,7 @@ class Index extends React.Component {
             }}
           />
         </div>
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap px-4 my-4 py-1">
           {rooms.map(room => (
             <GridItem room={room} key={room.id} />
           ))}

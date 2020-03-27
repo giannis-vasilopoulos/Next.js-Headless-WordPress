@@ -14,7 +14,7 @@ const GridItem = ({ room }) => {
       <ul>
         {room.acf.facilities &&
           room.acf.facilities.map((facility, i) => (
-            <li key={i}>{facility.title} </li>
+            <li key={i}>{facility.title}</li>
           ))}
       </ul>
     </div>
