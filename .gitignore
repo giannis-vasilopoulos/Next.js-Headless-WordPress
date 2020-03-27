@@ -1,5 +1,8 @@
 node_modules
 .next
 .idea
+yarn.lock
 package-lock.json
 .env
+public/workbox-*.*
+public/sw.*
