@@ -6,7 +6,7 @@ const GridItem = ({ room }) => {
         src={
           room.better_featured_image
             ? room.better_featured_image.source_url
-            : "./images/sthlm-square.jpeg"
+            : require("../../public/images/sthlm-square.jpeg")
         }
         alt={room.title.rendered}
       />

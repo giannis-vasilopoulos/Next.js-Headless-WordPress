@@ -54,6 +54,13 @@ const nextConfig = {
 
 module.exports = withPlugins(
   [
+    [
+      optimizedImages,
+      {
+        inlineImageLimit: 16384,
+        handleImages: ["jpeg", "jpg", "png", "webp", "gif", "ico"]
+      }
+    ],
     [sass],
     [
       withPWA,

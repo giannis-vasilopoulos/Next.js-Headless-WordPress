@@ -12,7 +12,7 @@ const Menu = ({ menu }) => {
         as={`/${locale != process.env.DEFAULT_LANG ? locale : ""}`}
         href={`/?slug=home&lang=${locale}`}
       >
-        <a className="link__item text-blue-500 no-underline text-sm">Home</a>
+        <a className="link__item text-blue-500 no-underline">Home</a>
       </Link>
       {menu.items.map(item => {
         const path = getSlug(item.url);

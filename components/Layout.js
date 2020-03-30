@@ -20,21 +20,28 @@ const Layout = ({ children, title = "Home", meta }) => {
 
         {/*'TODO loop meta data'*/}
 
-        <link rel="icon" href="/icons/favicon.ico" type="image/x-icon" />
+        <link
+          rel="icon"
+          href={require("../public/icons/favicon.ico")}
+          type="image/x-icon"
+        />
         <link rel="manifest" href="/manifest.json" />
         <link
-          href="/icons/favicon-16x16.png"
+          href={require("../public/icons/favicon-16x16.png")}
           rel="icon"
           type="image/png"
           sizes="16x16"
         />
         <link
-          href="/icons/favicon-32x32.png"
+          href={require("../public/icons/favicon-32x32.png")}
           rel="icon"
           type="image/png"
           sizes="32x32"
         />
-        <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png"></link>
+        <link
+          rel="apple-touch-icon"
+          href={require("../public/icons/apple-touch-icon.png")}
+        ></link>
         <meta name="theme-color" content="#303030" />
       </Head>
       <main style={layoutStyle}>{children}</main>
