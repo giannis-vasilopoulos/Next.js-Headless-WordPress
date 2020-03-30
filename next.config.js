@@ -41,6 +41,7 @@ const nextConfig = {
         ]
       }
     ];
+    config.optimization.minimize = true;
     return {
       ...config,
       module: {
@@ -53,12 +54,6 @@ const nextConfig = {
 
 module.exports = withPlugins(
   [
-    // [
-    //   optimizedImages,
-    //   {
-    //     /* config for next-optimized-images */
-    //   }
-    // ],
     [sass],
     [
       withPWA,
