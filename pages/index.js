@@ -24,13 +24,13 @@ class Index extends React.Component {
       ]);
       return { home, rooms };
     } catch (err) {
-      return null;
+      return { err };
     }
   }
 
   render() {
-    const { home, rooms, headerMenu } = this.props;
-    if (!home) return <Error statusCode={404} />;
+    const { home, rooms, headerMenu, err } = this.props;
+    if (err) return <Error statusCode={err.data.status} />;
     return (
       <Layout title={home.yoast_title} meta={home.yoast_meta}>
         <Header menu={headerMenu} />

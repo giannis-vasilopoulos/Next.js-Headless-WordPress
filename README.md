@@ -10,3 +10,14 @@ A repo to research the [Next.js](https://github.com/zeit/next.js/) and SSR to de
 - PWA Support
 - [Tailwind](https://tailwindcss.com/)
 - [styled-jsx](https://github.com/zeit/styled-jsx) (CSS-in-JS framework)
+
+## Dependencies
+
+- Wordpress Installation to fetch data from WP REST API
+- Wordpress Headless Theme
+- Wordpress Plugins
+  - ACF Pro & ACF to REST API
+  - WPML & WPML REST API & Advanced Custom Fields Multilingual
+  - Yoast Seo & WP REST Yoast Meta
+  - Better REST API Featured Images
+  - WP-REST-API V2 Menus

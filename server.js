@@ -28,16 +28,6 @@ app
       next();
     });
 
-    server.get("/:type/:slug", (req, res) => {
-      const actualPage = "/rooms/[slug]";
-      const queryParams = {
-        slug: req.params.slug,
-        apiRoute: req.params.type,
-        lang: req.lang
-      };
-      return app.render(req, res, actualPage, queryParams);
-    });
-
     server.get("/", (req, res) => {
       const queryParams = { slug: req.params.slug, lang: req.lang };
       return app.render(req, res, "/", queryParams);
@@ -46,6 +36,16 @@ app
     server.get("/:slug", (req, res) => {
       const actualPage = req.params.slug === "rooms" ? "/rooms" : "/page";
       const queryParams = { slug: req.params.slug, lang: req.lang };
+      return app.render(req, res, actualPage, queryParams);
+    });
+
+    server.get("/:type/:slug", (req, res) => {
+      const actualPage = "/rooms/[slug]";
+      const queryParams = {
+        slug: req.params.slug,
+        apiRoute: req.params.type,
+        lang: req.lang
+      };
       return app.render(req, res, actualPage, queryParams);
     });
 

@@ -8,12 +8,6 @@ const Menu = ({ menu }) => {
   const { locale } = useContext(LocaleContext);
   return (
     <>
-      <Link
-        as={`/${locale != process.env.DEFAULT_LANG ? locale : ""}`}
-        href={`/?slug=home&lang=${locale}`}
-      >
-        <a className="link__item text-blue-500 no-underline">Home</a>
-      </Link>
       {menu.items.map(item => {
         const path = getSlug(item.url);
 
@@ -25,11 +19,10 @@ const Menu = ({ menu }) => {
           );
         }
 
-        const actualPage = item.object === "rooms" ? "rooms" : "page";
         return (
           <Link
+            href={`${item.front_route}?slug=${item.slug}&lang=${locale}`} // ACF Field / front_route
             as={`${path}`}
-            href={`/${actualPage}?slug=${item.slug}&lang=${locale}`}
             key={item.ID}
           >
             <a className="link__item">{item.title}</a>

@@ -22,13 +22,13 @@ class Page extends React.Component {
 
       return { page };
     } catch (err) {
-      return null;
+      return { err };
     }
   }
 
   render() {
-    const { page, headerMenu } = this.props;
-    if (!page) return <Error statusCode={404} />;
+    const { page, headerMenu, err } = this.props;
+    if (err) return <Error statusCode={err.data.status} />;
     return (
       <Layout title={page.yoast_title}>
         <Header menu={headerMenu} />
