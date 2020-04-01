@@ -1,8 +1,9 @@
 const GridItem = ({ room }) => {
   return (
-    <div className="w-1/4">
-      <p className="text-center m-3">{room.title.rendered}</p>
+    <div className="col-3">
+      <p className="text-center my-3">{room.title.rendered}</p>
       <img
+        className="img-fluid"
         src={
           room.better_featured_image
             ? room.better_featured_image.source_url
@@ -10,7 +11,7 @@ const GridItem = ({ room }) => {
         }
         alt={room.title.rendered}
       />
-      <p className="text-center m-3">{room.acf.location}</p>
+      <p className="text-center my-3">{room.acf.location}</p>
       <ul>
         {room.acf.facilities &&
           room.acf.facilities.map((facility, i) => (

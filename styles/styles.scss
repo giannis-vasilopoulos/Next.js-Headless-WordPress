@@ -1,9 +1,9 @@
-@import "~tailwindcss/base";
-@import "~tailwindcss/components";
-@import "~tailwindcss/utilities";
-
-$primary-color: #0000ff;
+// @import "~tailwindcss/base";
+// @import "~tailwindcss/components";
+// @import "~tailwindcss/utilities";
+@import "./custom/variables";
+@import "~bootstrap/scss/bootstrap";
 
 body {
-  color: $primary-color;
+  color: $primary;
 }

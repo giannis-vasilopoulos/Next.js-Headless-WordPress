@@ -1,6 +1,6 @@
 require("dotenv").config();
 const withPlugins = require("next-compose-plugins");
-
+const withFonts = require("next-fonts");
 const sass = require("@zeit/next-sass");
 const withPWA = require("next-pwa");
 const tailwindCss = require("tailwindcss");
@@ -61,6 +61,7 @@ module.exports = withPlugins(
         handleImages: ["jpeg", "jpg", "png", "webp", "gif", "ico"]
       }
     ],
+    [withFonts],
     [sass],
     [
       withPWA,

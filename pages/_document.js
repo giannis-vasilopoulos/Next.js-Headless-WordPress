@@ -13,7 +13,7 @@ class NextDocument extends Document {
     return (
       <Html lang={locale}>
         <Head />
-        <body className={`next-${locale}`}>
+        <body className={`next-${locale} container`}>
           <Main />
           <NextScript />
         </body>
