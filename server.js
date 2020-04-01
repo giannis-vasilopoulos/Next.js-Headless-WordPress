@@ -4,6 +4,7 @@ const path = require("path");
 const dotenv = require("dotenv");
 dotenv.config();
 
+const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== "production";
 const defaultLang = process.env.DEFAULT_LANG;
 const app = next({ dev });
@@ -62,9 +63,9 @@ app
       return handle(req, res);
     });
 
-    server.listen(3000, err => {
+    server.listen(port, err => {
       if (err) throw err;
-      console.log("> Ready on http://localhost:3000");
+      console.log(`> Ready on http://localhost:${port}`);
     });
   })
   .catch(ex => {
