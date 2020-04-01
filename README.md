@@ -8,7 +8,8 @@ A repo to research the [Next.js](https://github.com/zeit/next.js/) and SSR to de
 - [Express](https://expressjs.com/)
 - Headless Wordpress
 - PWA Support
-- [Tailwind](https://tailwindcss.com/)
+- [Tailwind](https://tailwindcss.com/) | Repo Tag [v1.0.0](https://github.com/giannis-vasilopoulos/Next.js-Headless-WordPress/tree/v1.0.0)
+- [Bootstrap 4](https://getbootstrap.com/) | master branch
 - [styled-jsx](https://github.com/zeit/styled-jsx) (CSS-in-JS framework)
 
 ## Dependencies

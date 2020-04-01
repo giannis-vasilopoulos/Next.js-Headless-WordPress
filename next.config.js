@@ -3,7 +3,6 @@ const withPlugins = require("next-compose-plugins");
 const withFonts = require("next-fonts");
 const sass = require("@zeit/next-sass");
 const withPWA = require("next-pwa");
-const tailwindCss = require("tailwindcss");
 const optimizedImages = require("next-optimized-images");
 
 const nextConfig = {
@@ -14,19 +13,6 @@ const nextConfig = {
   },
   webpack(config, options) {
     const rules = [
-      {
-        test: /\.scss$/,
-        use: [
-          {
-            loader: "postcss-loader",
-            options: {
-              ident: "postcss",
-              plugins: [tailwindCss("./tailwind.config.js")]
-            }
-          },
-          { loader: "sass-loader" }
-        ]
-      },
       {
         test: /\.svg$/,
         use: [

@@ -27,7 +27,6 @@
     "node-sass": "^4.13.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
-    "tailwindcss": "^1.2.0",
     "wpapi": "^1.2.1"
   },
   "browserslist": [
