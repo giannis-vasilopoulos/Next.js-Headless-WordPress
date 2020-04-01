@@ -6,7 +6,6 @@ import GridItem from "../components/grid/grid-item";
 import PageWrapper from "../components/PageWrapper";
 import Header from "../components/Header";
 import endpoint from "../components/common/getEndpoint";
-
 class Index extends React.Component {
   static async getInitialProps(context) {
     const { lang } = context.query;
@@ -24,13 +23,13 @@ class Index extends React.Component {
       ]);
       return { home, rooms };
     } catch (err) {
-      return { err };
+      console.log(err);
     }
   }
 
   render() {
-    const { home, rooms, headerMenu, err } = this.props;
-    if (err) return <Error statusCode={err.data.status} />;
+    const { home, rooms, headerMenu } = this.props;
+    if (!home) return <Error statusCode={404} />;
     return (
       <Layout title={home.yoast_title} meta={home.yoast_meta}>
         <Header menu={headerMenu} />
