@@ -1,7 +1,7 @@
 require("dotenv").config();
 const withPlugins = require("next-compose-plugins");
 const withFonts = require("next-fonts");
-const sass = require("@zeit/next-sass");
+const withSass = require("@zeit/next-sass");
 const withPWA = require("next-pwa");
 const optimizedImages = require("next-optimized-images");
 
@@ -11,30 +11,22 @@ const nextConfig = {
     CMS_URL: process.env.CMS_URL,
     DEFAULT_LANG: process.env.DEFAULT_LANG
   },
-  webpack(config, options) {
-    const rules = [
-      {
-        test: /\.svg$/,
-        use: [
-          {
-            loader: "react-svg-loader",
-            options: {
-              svgo: {
-                plugins: [{ removeViewBox: false }]
-              }
+  webpack: (config, options) => {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: [
+        {
+          loader: "react-svg-loader",
+          options: {
+            svgo: {
+              plugins: [{ removeViewBox: false }]
             }
           }
-        ]
-      }
-    ];
-    config.optimization.minimize = true;
-    return {
-      ...config,
-      module: {
-        ...config.module,
-        rules: [...config.module.rules, ...rules]
-      }
-    };
+        }
+      ]
+    });
+
+    return config;
   }
 };
 
@@ -48,7 +40,7 @@ module.exports = withPlugins(
       }
     ],
     [withFonts],
-    [sass],
+    [withSass],
     [
       withPWA,
       {
