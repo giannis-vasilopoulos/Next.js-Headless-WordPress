@@ -1,12 +1,15 @@
+import { useContext } from "react";
+import { AppContext } from "../context/Context";
 import Head from "next/head";
-
+import Header from "./Header";
 const layoutStyle = {
   margin: 20,
   padding: 20,
-  border: "1px solid #DDD"
+  border: "1px solid #DDD",
 };
 
 const Layout = ({ children, title = "Home", meta }) => {
+  const { sharedData } = useContext(AppContext);
   return (
     <>
       <Head>
@@ -44,7 +47,10 @@ const Layout = ({ children, title = "Home", meta }) => {
         ></link>
         <meta name="theme-color" content="#303030" />
       </Head>
-      <main style={layoutStyle}>{children}</main>
+      <main style={layoutStyle}>
+        <Header menu={sharedData.headerMenu} />
+        {children}
+      </main>
     </>
   );
 };

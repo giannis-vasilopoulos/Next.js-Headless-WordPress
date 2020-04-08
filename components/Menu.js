@@ -1,14 +1,14 @@
+import { useContext } from "react";
 import Link from "next/link";
 import getSlug from "../components/common/getSlug";
-import { useContext } from "react";
 
-import { LocaleContext } from "../context/LocaleContext";
+import { AppContext } from "../context/Context";
 
 const Menu = ({ menu }) => {
-  const { locale } = useContext(LocaleContext);
+  const { locale } = useContext(AppContext);
   return (
     <>
-      {menu.items.map(item => {
+      {menu.items.map((item) => {
         const path = getSlug(item.url);
 
         if (item.object === "custom") {

@@ -3,20 +3,19 @@ import WPAPI from "wpapi";
 
 import Layout from "../components/Layout";
 import PageWrapper from "../components/PageWrapper";
-import Header from "../components/Header";
 import endpoint from "../components/common/getEndpoint";
 
 class Page extends React.Component {
   static async getInitialProps(context) {
     const { slug, lang } = context.query;
     const wp = new WPAPI({
-      endpoint: endpoint(lang)
+      endpoint: endpoint(lang),
     });
     try {
       const page = await wp
         .pages()
         .slug(slug)
-        .then(data => {
+        .then((data) => {
           return data[0];
         });
 
@@ -27,16 +26,15 @@ class Page extends React.Component {
   }
 
   render() {
-    const { page, headerMenu } = this.props;
+    const { page } = this.props;
     if (!page) return <Error statusCode={404} />;
     return (
       <Layout title={page.yoast_title}>
-        <Header menu={headerMenu} />
         <h2>{page.title.rendered}</h2>
         <div
           className="mv4"
           dangerouslySetInnerHTML={{
-            __html: page.content.rendered
+            __html: page.content.rendered,
           }}
         />
       </Layout>
