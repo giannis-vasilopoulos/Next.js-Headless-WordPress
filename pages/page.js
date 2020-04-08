@@ -5,41 +5,40 @@ import Layout from "../components/Layout";
 import PageWrapper from "../components/PageWrapper";
 import endpoint from "../components/common/getEndpoint";
 
-class Page extends React.Component {
-  static async getInitialProps(context) {
-    const { slug, lang } = context.query;
-    const wp = new WPAPI({
-      endpoint: endpoint(lang),
-    });
-    try {
-      const page = await wp
-        .pages()
-        .slug(slug)
-        .then((data) => {
-          return data[0];
-        });
+const Page = ({ page, error }) => {
+  if (!page) return <Error statusCode={404} />;
+  return (
+    <Layout title={page.yoast_title}>
+      <h2>{page.title.rendered}</h2>
+      <div
+        className="mv4"
+        dangerouslySetInnerHTML={{
+          __html: page.content.rendered,
+        }}
+      />
+    </Layout>
+  );
+};
 
-      return { page };
-    } catch (err) {
-      console.log(err);
-    }
-  }
+Page.getInitialProps = async ({ query, res }) => {
+  const { slug, lang } = query;
+  const wp = new WPAPI({
+    endpoint: endpoint(lang),
+  });
 
-  render() {
-    const { page } = this.props;
-    if (!page) return <Error statusCode={404} />;
-    return (
-      <Layout title={page.yoast_title}>
-        <h2>{page.title.rendered}</h2>
-        <div
-          className="mv4"
-          dangerouslySetInnerHTML={{
-            __html: page.content.rendered,
-          }}
-        />
-      </Layout>
-    );
+  try {
+    const page = await wp
+      .pages()
+      .slug(slug)
+      .then((data) => {
+        return data[0];
+      });
+
+    return { page };
+  } catch (err) {
+    console.log(err);
+    return { error: res.statusCode };
   }
-}
+};
 
 export default PageWrapper(Page);

@@ -16,13 +16,12 @@ export const AppProvider = ({ lang, children }) => {
   wp.menus = wp.registerRoute("menus/v1", "/menus/(?P<id>[a-zA-Z(-]+)");
 
   React.useEffect(() => {
-    const fetchData = async () => {
+    (async () => {
       const [headerMenu] = await Promise.all([
         wp.menus().id("header-menu").param("lang", locale),
       ]);
       setSharedData({ headerMenu });
-    };
-    fetchData();
+    })();
   }, []); //trigger on mount only
 
   React.useEffect(() => {
