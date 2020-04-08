@@ -1,4 +1,5 @@
 import Layout from "../../components/Layout";
+import PageWrapper from "../components/PageWrapper";
 
 function RoomItem(props) {
   // console.log(props);
@@ -9,10 +10,10 @@ function RoomItem(props) {
   );
 }
 
-RoomItem.getInitialProps = async function({ query }) {
+RoomItem.getInitialProps = async function ({ query }) {
   return {
-    query
+    query,
   };
 };
 
-export default RoomItem;
+export default PageWrapper(RoomItem);
